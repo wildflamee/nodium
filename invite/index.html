@@ -1,78 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nodium</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<style>
-:root { --blue:#4EA1FC; --black:#0a0a0a; --white:#fff; }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
-canvas{position:fixed;top:0;left:0;z-index:-1}
-
-/* NAV */
-.nav{position:sticky;top:0;display:flex;justify-content:center;align-items:center;padding:20px;background:rgba(10,10,10,.6);backdrop-filter:blur(10px)}
-.logo{font-weight:800;font-size:20px}
-
-/* HERO */
-.hero{min-height:85vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
-.hero h1{
-  font-size:clamp(36px,8vw,72px);
-  font-weight:800;
-  background:linear-gradient(90deg,#fff,#4EA1FC,#fff);
-  background-size:200%;
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:gradient 4s linear infinite;
-}
-@keyframes gradient{
-  0%{background-position:0%}
-  100%{background-position:200%}
-}
-.hero p{margin-top:15px;opacity:.7;font-size:clamp(14px,2.5vw,18px)}
-
-/* BUTTON */
-.btn{margin-top:25px;padding:14px 28px;background:var(--blue);border:none;color:#fff;border-radius:8px;cursor:pointer;transition:.2s;font-size:16px}
-.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(78,161,252,.4)}
-
-.footer{text-align:center;padding:30px;opacity:.5;font-size:14px}
-
-/* MOBILE */
-@media(max-width:600px){
-  .nav{padding:15px}
-  .hero{min-height:80vh}
-}
-</style>
+  <script>
+    window.location.replace("https://discord.com/oauth2/authorize?client_id=1481804038117920969&permissions=8&scope=bot%20applications.commands");
+  </script>
 </head>
 <body>
-
-<canvas id="particles"></canvas>
-
-<div class="nav">
-  <div class="logo">NODIUM</div>
-</div>
-
-<section class="hero">
-  <h1>Moderation, Perfected.</h1>
-  <p>Fast. Clean. Reliable.</p>
-  <button class="btn" onclick="invite()">Invite the Bot</button>
-</section>
-
-<div class="footer">© 2026 Nodium</div>
-
-<script>
-function invite(){window.open("https://discord.com/oauth2/authorize?client_id=1481804038117920969&permissions=8&scope=bot%20applications.commands")}
-
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<80;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:Math.random()-.5,vy:Math.random()-.5})}
-function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.fillStyle="rgba(78,161,252,0.6)";ctx.fillRect(p.x,p.y,2,2)});requestAnimationFrame(draw)}draw();
-</script>
-
 </body>
 </html>
