@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nodium</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/invite/favicon.png">
+<link rel="icon" href="/invite/favicon.ico">
+<link rel="apple-touch-icon" href="/invite/favicon.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
@@ -63,15 +69,46 @@ canvas{position:fixed;top:0;left:0;z-index:-1}
 <div class="footer">© 2026 Nodium</div>
 
 <script>
-function invite(){window.open("https://discord.com/oauth2/authorize?client_id=1481804038117920969&permissions=8&scope=bot%20applications.commands")}
+function invite(){
+  window.open("https://discord.com/oauth2/authorize?client_id=1481804038117920969&permissions=8&scope=bot%20applications.commands")
+}
 
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+
+function resize(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
 let particles=[];
-for(let i=0;i<80;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:Math.random()-.5,vy:Math.random()-.5})}
-function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.fillStyle="rgba(78,161,252,0.6)";ctx.fillRect(p.x,p.y,2,2)});requestAnimationFrame(draw)}draw();
+for(let i=0;i<80;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    vx:Math.random()-.5,
+    vy:Math.random()-.5
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=p.vx;
+    p.y+=p.vy;
+
+    if(p.x<0||p.x>canvas.width)p.vx*=-1;
+    if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+    ctx.fillStyle="rgba(78,161,252,0.6)";
+    ctx.fillRect(p.x,p.y,2,2);
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
 </script>
 
 </body>
